@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- 文字コードをUTF-8に設定 -->
+        <meta charset="utf-8">
+
+        <!-- ページタイトル -->
+        <title>My first Vue app</title>
+
+        <!-- Bootstrapを読み込んでデザインを整える -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+
+        <!-- Vue.js (バージョン3.5.0) を読み込む -->
+        <script src="https://unpkg.com/vue@3.5.0/dist/vue.global.js"></script>
+    </head>
+
+    <body>
+
+        <!-- 見出し -->
+        <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
+
+        <!-- Vueが操作する範囲（マウントする場所） -->
+        <div id="app" class="container">
+
+          <!-- messageのデータを表示 -->
+          <p>{{ message }}</p>
+
+          <!-- Bootstrapのテーブル -->
+          <table class="table">
+
+            <!-- テーブルのヘッダー部分 -->
+            <thead class="thead-dark">
+              <tr>
+                <th>Name</th>
+                <th>mail</th>
+                <th>tel</th>
+              </tr>
+            </thead>
+
+            <!--
+              v-forを使ってitems配列のデータを繰り返し表示
+              itemには配列の中の1つずつのデータが入る
+            -->
+            <tr v-for="item in items">
+
+              <!-- itemのnameを表示 -->
+              <td>{{item.name}}</td>
+
+              <!-- itemのmailを表示 -->
+              <td>{{item.mail}}</td>
+
+              <!-- itemのtelを表示 -->
+              <td>{{item.tel}}</td>
+            </tr>
+
+          </table>
+        </div>
+
+        <script>
+
+        // Vueアプリの設定をappdataにまとめる
+        const appdata = {
+
+          // data() は画面で使うデータを定義する
+          data() {
+            return {
+
+              // メッセージ用データ
+              message : '※データをテーブル表示する',
+
+              // 配列データ（複数人の情報）
+              items:[
+
+              // オブジェクト形式でデータを保存
+              { name: 'Yasushi', mail: 'osonoi@cu', tel: '1111' },
+              { name: 'Koh', mail: 'kojima@cu', tel: '2222' },
+              { name: 'Alice', mail: 'alice@example.com', tel: '3333' },
+              { name: 'Bob', mail: 'bob@example.com', tel: '4444' },
+              { name: 'Charlie', mail: 'charlie@example.com', tel: '5555' },
+              { name: 'David', mail: 'david@example.com', tel: '6666' },
+              { name: 'Eve', mail: 'eve@example.com', tel: '7777' },
+              { name: 'Frank', mail: 'frank@example.com', tel: '8888' },
+              { name: 'Grace', mail: 'grace@example.com', tel: '9999' },
+              { name: 'Henry', mail: 'henry@example.com', tel: '0000' },
+              ]
+            }
+          }
+        }
+
+        // Vueアプリを作成し、id="app" に適用する
+        Vue.createApp(appdata).mount('#app')
+
+        </script>
+
+    </body>
+</html>
